@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"highlight",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "highlight",
+    "description": "api documentation for [highlight (v0.2.4)](https://github.com/andris9/highlight#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-highlight.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-highlight) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-highlight.svg)](https://travis-ci.org/npmdoc/node-npmdoc-highlight)",
     "devDependencies": {
-        "highlight": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "highlight": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-highlight",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-highlight",
+    "keywords": [
+        "documentation",
+        "highlight"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_highlight.js",
+    "name": "npmdoc-highlight",
+    "nameAlias": "npmdoc_highlight",
+    "nameOriginal": "npmdoc-highlight",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-highlight"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
