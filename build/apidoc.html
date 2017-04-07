@@ -1,0 +1,184 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/andris9/highlight#readme"
+
+    >highlight (v0.2.4)</a>
+</h1>
+<h4>Highlight code syntax with node.js</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.highlight">module highlight</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.highlight.highlight">
+            function <span class="apidocSignatureSpan"></span>highlight
+            <span class="apidocSignatureSpan">(text, tabReplace, useCodeBlocks)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.highlight.Highlight">
+            function <span class="apidocSignatureSpan">highlight.</span>Highlight
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.highlight.init">
+            function <span class="apidocSignatureSpan">highlight.</span>init
+            <span class="apidocSignatureSpan">(cb, langs, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">highlight.</span>languages</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">highlight.</span>loadedLanguages</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.highlight" id="apidoc.module.highlight">module highlight</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.highlight.highlight" id="apidoc.element.highlight.highlight">
+        function <span class="apidocSignatureSpan"></span>highlight
+        <span class="apidocSignatureSpan">(text, tabReplace, useCodeBlocks)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function highlight(text, tabReplace, useCodeBlocks){
+  tabReplace = tabReplace || &#x27;    &#x27;;
+  text = text.replace(/\r\n|\r|\n/g, &#x27;\n&#x27;); // remove \r
+  if (!!useCodeBlocks) {
+    // JS regexpes have some multiline issues, so we temporarily remove them
+    return text
+      .replace(/\n/g,&#x27;\uffff&#x27;)
+      .replace(/&#x3c;code([^&#x3e;]*)&#x3e;(.*?)&#x3c;\/code&#x3e;/gm, function(original, attrs, source){
+        return &#x27;&#x3c;code&#x27;+attrs+&#x27;&#x3e;&#x27;+hljs.highlightText(source.replace(/\uffff/g,&#x22;\n&#x22;), tabReplace)+&#x27;&#x3c;/code&#x3e;&#x27;;
+      })
+      .replace(/&#x26;amp;(\w+;)/g,&#x27;&#x26;$1&#x27;).replace(/\uffff/g,&#x22;\n&#x22;);
+  } else {
+    return hljs.highlightText(text, tabReplace);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.highlight.Highlight" id="apidoc.element.highlight.Highlight">
+        function <span class="apidocSignatureSpan">highlight.</span>Highlight
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function backwardsCompat() {
+  // currently synchronous
+  Highlight.init(function () {}, [&#x27;php&#x27;]);
+  return Highlight.highlight.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.highlight.init" id="apidoc.element.highlight.init">
+        function <span class="apidocSignatureSpan">highlight.</span>init
+        <span class="apidocSignatureSpan">(cb, langs, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function init(cb, langs, opts) {
+  if (!Array.isArray(langs)) {
+    langs = Highlight.languages.slice();
+  }
+
+  loadLangs(cb, langs);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
