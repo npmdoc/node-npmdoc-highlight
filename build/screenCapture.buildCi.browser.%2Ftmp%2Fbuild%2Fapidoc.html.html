@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/andris9/highlight#readme"
-
-    >highlight (v0.2.4)</a>
+    <a href="https://github.com/andris9/highlight#readme">highlight (v0.2.4)</a>
 </h1>
 <h4>Highlight code syntax with node.js</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.highlight">module highlight</a><ol>
 
@@ -159,16 +152,16 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function highlight(text, tabReplace, useCodeBlocks){
-  tabReplace = tabReplace || &#x27;    &#x27;;
-  text = text.replace(/\r\n|\r|\n/g, &#x27;\n&#x27;); // remove \r
+  tabReplace = tabReplace || '    ';
+  text = text.replace(/\r\n|\r|\n/g, '\n'); // remove \r
   if (!!useCodeBlocks) {
     // JS regexpes have some multiline issues, so we temporarily remove them
     return text
-      .replace(/\n/g,&#x27;\uffff&#x27;)
-      .replace(/&#x3c;code([^&#x3e;]*)&#x3e;(.*?)&#x3c;\/code&#x3e;/gm, function(original, attrs, source){
-        return &#x27;&#x3c;code&#x27;+attrs+&#x27;&#x3e;&#x27;+hljs.highlightText(source.replace(/\uffff/g,&#x22;\n&#x22;), tabReplace)+&#x27;&#x3c;/code&#x3e;&#x27;;
+      .replace(/\n/g,'\uffff')
+      .replace(/&lt;code([^&gt;]*)&gt;(.*?)&lt;\/code&gt;/gm, function(original, attrs, source){
+        return '&lt;code'+attrs+'&gt;'+hljs.highlightText(source.replace(/\uffff/g,"\n"), tabReplace)+'&lt;/code&gt;';
       })
-      .replace(/&#x26;amp;(\w+;)/g,&#x27;&#x26;$1&#x27;).replace(/\uffff/g,&#x22;\n&#x22;);
+      .replace(/&amp;amp;(\w+;)/g,'&amp;$1').replace(/\uffff/g,"\n");
   } else {
     return hljs.highlightText(text, tabReplace);
   }
@@ -187,7 +180,7 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function backwardsCompat() {
   // currently synchronous
-  Highlight.init(function () {}, [&#x27;php&#x27;]);
+  Highlight.init(function () {}, ['php']);
   return Highlight.highlight.apply(null, arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -196,16 +189,16 @@
 var self = this;
 
 (function () {
-&#x22;use strict&#x22;;
+"use strict";
 /* node-highlight is based on highlight.js (see vendor/highlight.js)       */
-/* usage: html = require(&#x22;highlight&#x22;).<span class="apidocCodeKeywordSpan">Highlight</span>(code_string);              */
+/* usage: html = require("highlight").<span class="apidocCodeKeywordSpan">Highlight</span>(code_string);              */
 /* NB! You also need to include a CSS file from vendor/highlight.js/styles */
 
 // load syntax highlighter
 // TODO create private instances of highlighter
 // (with fewer langs) for greater accuracy
 var Highlight = module.exports
-  , fs = require(&#x27;fs&#x27;)
+  , fs = require('fs')
 ...</pre></li>
     </ul>
 
@@ -233,7 +226,7 @@ var Highlight = module.exports
   // TODO why is `this` in use at all?
   function backwardsCompat() {
     // currently synchronous
-    Highlight.<span class="apidocCodeKeywordSpan">init</span>(function () {}, [&#x27;php&#x27;]);
+    Highlight.<span class="apidocCodeKeywordSpan">init</span>(function () {}, ['php']);
     return Highlight.highlight.apply(null, arguments);
   }
   Highlight.Highlight = self.Highlight = backwardsCompat;
@@ -260,16 +253,16 @@ var Highlight = module.exports
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function highlight(text, tabReplace, useCodeBlocks){
-  tabReplace = tabReplace || &#x27;    &#x27;;
-  text = text.replace(/\r\n|\r|\n/g, &#x27;\n&#x27;); // remove \r
+  tabReplace = tabReplace || '    ';
+  text = text.replace(/\r\n|\r|\n/g, '\n'); // remove \r
   if (!!useCodeBlocks) {
     // JS regexpes have some multiline issues, so we temporarily remove them
     return text
-      .replace(/\n/g,&#x27;\uffff&#x27;)
-      .replace(/&#x3c;code([^&#x3e;]*)&#x3e;(.*?)&#x3c;\/code&#x3e;/gm, function(original, attrs, source){
-        return &#x27;&#x3c;code&#x27;+attrs+&#x27;&#x3e;&#x27;+hljs.highlightText(source.replace(/\uffff/g,&#x22;\n&#x22;), tabReplace)+&#x27;&#x3c;/code&#x3e;&#x27;;
+      .replace(/\n/g,'\uffff')
+      .replace(/&lt;code([^&gt;]*)&gt;(.*?)&lt;\/code&gt;/gm, function(original, attrs, source){
+        return '&lt;code'+attrs+'&gt;'+hljs.highlightText(source.replace(/\uffff/g,"\n"), tabReplace)+'&lt;/code&gt;';
       })
-      .replace(/&#x26;amp;(\w+;)/g,&#x27;&#x26;$1&#x27;).replace(/\uffff/g,&#x22;\n&#x22;);
+      .replace(/&amp;amp;(\w+;)/g,'&amp;$1').replace(/\uffff/g,"\n");
   } else {
     return hljs.highlightText(text, tabReplace);
   }
@@ -288,7 +281,7 @@ var Highlight = module.exports
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function backwardsCompat() {
   // currently synchronous
-  Highlight.init(function () {}, [&#x27;php&#x27;]);
+  Highlight.init(function () {}, ['php']);
   return Highlight.highlight.apply(null, arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -297,16 +290,16 @@ var Highlight = module.exports
 var self = this;
 
 (function () {
-&#x22;use strict&#x22;;
+"use strict";
 /* node-highlight is based on highlight.js (see vendor/highlight.js)       */
-/* usage: html = require(&#x22;highlight&#x22;).<span class="apidocCodeKeywordSpan">Highlight</span>(code_string);              */
+/* usage: html = require("highlight").<span class="apidocCodeKeywordSpan">Highlight</span>(code_string);              */
 /* NB! You also need to include a CSS file from vendor/highlight.js/styles */
 
 // load syntax highlighter
 // TODO create private instances of highlighter
 // (with fewer langs) for greater accuracy
 var Highlight = module.exports
-  , fs = require(&#x27;fs&#x27;)
+  , fs = require('fs')
 ...</pre></li>
     </ul>
 
@@ -334,7 +327,7 @@ var Highlight = module.exports
   // TODO why is `this` in use at all?
   function backwardsCompat() {
     // currently synchronous
-    Highlight.<span class="apidocCodeKeywordSpan">init</span>(function () {}, [&#x27;php&#x27;]);
+    Highlight.<span class="apidocCodeKeywordSpan">init</span>(function () {}, ['php']);
     return Highlight.highlight.apply(null, arguments);
   }
   Highlight.Highlight = self.Highlight = backwardsCompat;
@@ -355,3 +348,4 @@ var Highlight = module.exports
     ]
 </div>
 </div>
+</body></html>
